@@ -8,8 +8,11 @@ $ ->
         alert 'コナミコマンド発動'
         window.FONTBOMB_HIDE_CONFIRMATION = true
         s = document.createElement 'script'
-        useSSL = document.location.protocol
-        s.setAttribute 'src', "#{useSSL}//fontbomb.ilex.ca/js/main.js"
+        if 'https:' is document.location.protocol
+          url = "https://rawgit.com/plehoux/fontBomb/master/js/main.js"
+        else
+          url = "http//fontbomb.ilex.ca/js/main.js"
+        s.setAttribute 'src', url
         document.body.appendChild s
       catch error
         alert "Your browser is not compatible, try with Chrome."
